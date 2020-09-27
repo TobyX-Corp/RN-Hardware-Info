@@ -1,8 +1,12 @@
-//
-//  Device.m
-//  DeviceInfo
-//
-//  Created by Yancheng Han on 2020-09-20.
-//
+#import "Device.h"
+#import <React/RCTLog.h>
 
-#import <Foundation/Foundation.h>
+@implementation Device
+
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_METHOD(printAction) {
+  RCTLogInfo(@"This is my test module!");
+}
+
+@end
