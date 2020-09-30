@@ -81,31 +81,3 @@
   
   return taskInfo.resident_size / 1024.0 / 1024.0;
 }
-
-int64_t getUsedMemory()
-{
-    size_t length = 0;
-    int mib[6] = {0};
-    
-    int pagesize = 0;
-    mib[0] = CTL_HW;
-    mib[1] = HW_PAGESIZE;
-    length = sizeof(pagesize);
-    if (sysctl(mib, 2, &pagesize, &length, NULL, 0) < 0)
-    {
-        return 0;
-    }
-    
-    mach_msg_type_number_t count = HOST_VM_INFO_COUNT;
-    
-    vm_statistics_data_t vmstat;
-    
-    if (host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmstat, &count) != KERN_SUCCESS)
-    {
-		return 0;
-    }
-    
-    int wireMem = vmstat.wire_count * pagesize;
-    int activeMem = vmstat.active_count * pagesize;
-    return wireMem + activeMem;
-}

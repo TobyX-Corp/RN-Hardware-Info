@@ -16,6 +16,8 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2D9197922522AE6300D349AF /* EEPowerInformation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D9197912522AE6300D349AF /* EEPowerInformation.mm */; };
+		2D9197A62522C62200D349AF /* UIDeviceListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D9197A52522C62200D349AF /* UIDeviceListener.mm */; };
 		2DCD954D1E0B4F2C00145EB5 /* DeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DeviceInfoTests.m */; };
 		2DD8F782251832D5004217F2 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8F781251832D5004217F2 /* Device.m */; };
 		7496E63D3F1E030DAFC01011 /* libPods-DeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF70C4083ED5D00E9B5CE70D /* libPods-DeviceInfo.a */; };
@@ -55,6 +57,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DeviceInfo/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* DeviceInfo-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeviceInfo-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* DeviceInfo-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DeviceInfo-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D9197912522AE6300D349AF /* EEPowerInformation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EEPowerInformation.mm; sourceTree = "<group>"; };
+		2D91979B2522AE8400D349AF /* EEPowerInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EEPowerInformation.h; sourceTree = "<group>"; };
+		2D9197A42522C5F400D349AF /* UIDeviceListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceListener.h; sourceTree = "<group>"; };
+		2D9197A52522C62200D349AF /* UIDeviceListener.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = UIDeviceListener.mm; sourceTree = "<group>"; };
 		2DD8F78025183238004217F2 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		2DD8F781251832D5004217F2 /* Device.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		53A6A3619080EE7725011B0E /* Pods-DeviceInfo-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceInfo-tvOS.release.xcconfig"; path = "Target Support Files/Pods-DeviceInfo-tvOS/Pods-DeviceInfo-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +183,10 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				2D9197912522AE6300D349AF /* EEPowerInformation.mm */,
+				2D9197A42522C5F400D349AF /* UIDeviceListener.h */,
+				2D9197A52522C62200D349AF /* UIDeviceListener.mm */,
+				2D91979B2522AE8400D349AF /* EEPowerInformation.h */,
 				2DD8F78025183238004217F2 /* Device.h */,
 				2DD8F781251832D5004217F2 /* Device.m */,
 				13B07FAE1A68108700A75B9A /* DeviceInfo */,
@@ -300,6 +310,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 3K37QH4GZP;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -574,7 +585,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD8F782251832D5004217F2 /* Device.m in Sources */,
+				2D9197922522AE6300D349AF /* EEPowerInformation.mm in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				2D9197A62522C62200D349AF /* UIDeviceListener.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +674,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K37QH4GZP;
 				ENABLE_BITCODE = NO;
@@ -671,8 +686,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.kevin.DeviceInfo;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.dukily.DeviceInfo;
 				PRODUCT_NAME = DeviceInfo;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -685,6 +701,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K37QH4GZP;
 				INFOPLIST_FILE = DeviceInfo/Info.plist;
@@ -694,8 +712,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.kevin.DeviceInfo;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.dukily.DeviceInfo;
 				PRODUCT_NAME = DeviceInfo;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
