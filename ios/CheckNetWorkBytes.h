@@ -9,12 +9,19 @@
 #define Speed_h
 
 #import <Foundation/Foundation.h>
+NS_ASSUME_NONNULL_BEGIN
 
-@interface NSObject (CheckNetWorkBytes)
-+ (void )initCheck;
-+ (long long )getNetWorkBytesPerSecond;
-+ (long long )getGprsWifiFlowIOBytes;
-+ (NSString *)convertStringWithbyte:(long)bytes;
+@protocol OYNetSpeedToolDelegate <NSObject>
+@optional
+- (void)onUpdateNetReceiveSpeed:(unsigned long long)speed;
+- (void)onUpdateNetSendSpeed:(unsigned long long)speed;
 @end
 
-#endif /* Speed_h */
+@interface CheckNetWorkBytes : NSObject
+@property (nonatomic, weak) id<OYNetSpeedToolDelegate> delegate;
++ (instancetype)shareTool;
+- (void)startMonitor;
+- (void)stopMonitor;
+@end
+
+NS_ASSUME_NONNULL_END

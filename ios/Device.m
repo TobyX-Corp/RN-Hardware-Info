@@ -43,6 +43,7 @@ static NSDictionary *appCpuUsage(){
     long total_time     = 0;
     long total_userTime = 0;
     CGFloat total_cpu   = 0;
+    CGFloat network_speed   = 0;
     int j;
     
     // for each thread
@@ -97,16 +98,30 @@ static NSDictionary *appCpuUsage(){
       return NULL;
     }
     
+    //network speed
+//  NSString *speed = [NSString stringWithFormat:@"speed%@/s",[NSObject convertStringWithbyte:perSecond]];
+  
+
+  
     EEPowerInformation *powerInfo;
   
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-
-    return @{@"cpu_usage": @(total_cpu),
-             @"available_memory": @(((vm_page_size *vmStats.free_count) /1024.0) / 1024.0),
-             @"used_memory": @(taskInfo.resident_size / 1024.0 / 1024.0),
-             @"app_memory": @(info.resident_size / 1024.0 / 1024.0),
-             @"battery": @(powerInfo.batteryRawLevel)
-           };
+  NSDictionary *dict =@{@"cpu_usage": @(total_cpu),
+                        @"available_memory": @(((vm_page_size *vmStats.free_count) /1024.0) / 1024.0),
+                        @"used_memory": @(taskInfo.resident_size / 1024.0 / 1024.0),
+                        @"app_memory": @(info.resident_size / 1024.0 / 1024.0),
+                        @"battery": @(powerInfo.batteryRawLevel)
+                      };
+//  if (speed != nil){
+//     return @{@"cpu_usage": @(total_cpu),
+//              @"available_memory": @(((vm_page_size *vmStats.free_count) /1024.0) / 1024.0),
+//              @"used_memory": @(taskInfo.resident_size / 1024.0 / 1024.0),
+//              @"app_memory": @(info.resident_size / 1024.0 / 1024.0),
+//              @"battery": @(powerInfo.batteryRawLevel),
+//              @"networkSpeed" : speed
+//            };
+//  }
+  return dict;
 }
 
 RCT_EXPORT_METHOD(getAppCpuUsage:(RCTResponseSenderBlock)callback) {

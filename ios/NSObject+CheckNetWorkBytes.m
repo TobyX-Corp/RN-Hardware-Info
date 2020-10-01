@@ -130,16 +130,16 @@ long _lastUpLoadTimeStamp = 0;
 
 //将bytes单位转换
 + (NSString *)convertStringWithbyte:(long)bytes{
-//    if(bytes < 1024){ // B
-//        return [NSString stringWithFormat:@"%ldB", bytes];
-//    }else if(bytes >= 1024 && bytes < 1024 * 1024){// KB
-//        return [NSString stringWithFormat:@"%.1fKB", (double)bytes / 1024];
-//    }else if(bytes >= 1024 * 1024 && bytes < 1024 * 1024 * 1024){// MB
-//        return [NSString stringWithFormat:@"%.2fMB", (double)bytes / (1024 * 1024)];
-//    }else{ // GB
-//        return [NSString stringWithFormat:@"%.3fGB", (double)bytes / (1024 * 1024 * 1024)];
-//    }
-    return [NSString stringWithFormat:@"%.1f", (double)bytes / 1024];
+    if(bytes < 1024){ // B
+        return [NSString stringWithFormat:@"%ldB", bytes];
+    }else if(bytes >= 1024 && bytes < 1024 * 1024){// KB
+        return [NSString stringWithFormat:@"%.1fKB", (double)bytes / 1024];
+    }else if(bytes >= 1024 * 1024 && bytes < 1024 * 1024 * 1024){// MB
+        return [NSString stringWithFormat:@"%.2fMB", (double)bytes / (1024 * 1024)];
+    }else{ // GB
+        return [NSString stringWithFormat:@"%.3fGB", (double)bytes / (1024 * 1024 * 1024)];
+    }
+//    return [NSString stringWithFormat:@"%.1f", (double)bytes / 1024];
 }
 
 // 获取当前时间戳
