@@ -315,11 +315,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = GK92DFV4A9;
+						DevelopmentTeam = 3K37QH4GZP;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = GK92DFV4A9;
+						DevelopmentTeam = 3K37QH4GZP;
 						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
@@ -643,7 +643,7 @@
 			baseConfigurationReference = D452326590811A1629C84013 /* Pods-DeviceInfo-DeviceInfoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = GK92DFV4A9;
+				DEVELOPMENT_TEAM = 3K37QH4GZP;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -692,7 +692,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GK92DFV4A9;
+				DEVELOPMENT_TEAM = 3K37QH4GZP;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DeviceInfo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -701,7 +701,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.test.DeviceInfo;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.dukily.DeviceInfo;
 				PRODUCT_NAME = DeviceInfo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

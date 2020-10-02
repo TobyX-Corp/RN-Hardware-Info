@@ -43,7 +43,8 @@ static NSDictionary *appCpuUsage(){
     long total_time     = 0;
     long total_userTime = 0;
     CGFloat total_cpu   = 0;
-    CGFloat network_speed   = 0;
+    CGFloat used_memory = 0;
+    CGFloat available_memory = 0;
     int j;
     
     // for each thread
@@ -87,30 +88,12 @@ static NSDictionary *appCpuUsage(){
     if (kernReturn2 != KERN_SUCCESS) {
       return NULL;
     }
-
-    //app memory
-    struct mach_task_basic_info info;
-    mach_msg_type_number_t count = MACH_TASK_BASIC_INFO_COUNT;
-	
-    int r = task_info(mach_task_self(), MACH_TASK_BASIC_INFO, (task_info_t)& info, & count);
-    if (r != KERN_SUCCESS)
-    {
-      return NULL;
-    }
     
-    //network speed
-//  NSString *speed = [NSString stringWithFormat:@"speed%@/s",[NSObject convertStringWithbyte:perSecond]];
-  
+    used_memory = taskInfo.resident_size / 1024.0 / 1024.0;
+    available_memory = ((vm_page_size *vmStats.free_count) /1024.0) / 1024.0;
 
-  
-    EEPowerInformation *powerInfo;
-  
-    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-  NSDictionary *dict =@{@"cpu_usage": @(total_cpu),
-                        @"available_memory": @(((vm_page_size *vmStats.free_count) /1024.0) / 1024.0),
-                        @"used_memory": @(taskInfo.resident_size / 1024.0 / 1024.0),
-                        @"app_memory": @(info.resident_size / 1024.0 / 1024.0),
-                        @"battery": @(powerInfo.batteryRawLevel)
+    NSDictionary *dict =@{@"cpu_usage": @(total_cpu),
+                        @"memory_usage": @(used_memory / (used_memory + available_memory) * 100)
                       };
 //  if (speed != nil){
 //     return @{@"cpu_usage": @(total_cpu),
