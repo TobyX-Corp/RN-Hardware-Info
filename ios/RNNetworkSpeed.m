@@ -33,16 +33,16 @@ RCT_EXPORT_METHOD(stopListenNetworkSpeed) {
     }
 }
 
-#pragma mark - 实例方法
+#pragma mark 
 - (void)getNetworkTraffic {
-    NSDictionary *netWorkSpeed = [NSObject getNetworkSpeed]; //获取当前秒流量
+    NSDictionary *netWorkSpeed = [NSObject getNetworkSpeed]; //get current network speed
     [self sendEventWithName:@"onSpeedUpdate" body:netWorkSpeed];
-    NSLog(@"下载速度%@",[netWorkSpeed valueForKey: @"downLoadSpeed"]);
-    NSLog(@"上传速度%@",[netWorkSpeed valueForKey: @"upLoadSpeed"]);
+    NSLog(@"ownLoadSpeed@",[netWorkSpeed valueForKey: @"downLoadSpeed"]);
+    NSLog(@"upLoadSpeed%@",[netWorkSpeed valueForKey: @"upLoadSpeed"]);
 }
 
 
-#pragma mark - 消息发送
+#pragma mark 
 - (NSArray<NSString *> *)supportedEvents {
     return @[@"onSpeedUpdate"];
 }
