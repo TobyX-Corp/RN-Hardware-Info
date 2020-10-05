@@ -4,18 +4,13 @@
 #import <mach/mach.h>
 #import <mach/task_info.h>
 #import <assert.h>
-#import "UIDeviceListener.h"
-#import "EEPowerInformation.h"
+#import "NetworkInfo.h"
 
 @implementation Device
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(printAction) {
-  RCTLogInfo(@"This is my test module!");
-}
-
-static NSDictionary *appCpuUsage(){
+static NSDictionary *appUsage(){
   //cpu uage
   kern_return_t kr;
   task_info_data_t tinfo;
@@ -91,24 +86,20 @@ static NSDictionary *appCpuUsage(){
     
     used_memory = taskInfo.resident_size / 1024.0 / 1024.0;
     available_memory = ((vm_page_size *vmStats.free_count) /1024.0) / 1024.0;
-
+    
+    //network usage
+    NSDictionary *netWorkSpeed = [NSObject getNetworkSpeed];
+  
     NSDictionary *dict =@{@"cpu_usage": @(total_cpu),
-                        @"memory_usage": @(used_memory / (used_memory + available_memory) * 100)
+                        @"memory_usage": @(used_memory / (used_memory + available_memory) * 100),
+                        @"download_speed": [netWorkSpeed valueForKey: @"downLoadSpeed"],
+                        @"upload_speed": [netWorkSpeed valueForKey: @"upLoadSpeed"]
                       };
-//  if (speed != nil){
-//     return @{@"cpu_usage": @(total_cpu),
-//              @"available_memory": @(((vm_page_size *vmStats.free_count) /1024.0) / 1024.0),
-//              @"used_memory": @(taskInfo.resident_size / 1024.0 / 1024.0),
-//              @"app_memory": @(info.resident_size / 1024.0 / 1024.0),
-//              @"battery": @(powerInfo.batteryRawLevel),
-//              @"networkSpeed" : speed
-//            };
-//  }
   return dict;
 }
 
-RCT_EXPORT_METHOD(getAppCpuUsage:(RCTResponseSenderBlock)callback) {
-    callback(@[[NSNull null], appCpuUsage()]);
+RCT_EXPORT_METHOD(getAppUsage:(RCTResponseSenderBlock)callback) {
+    callback(@[[NSNull null], appUsage()]);
 }
 
 @end

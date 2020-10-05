@@ -1,11 +1,4 @@
-//
-//  NSObject+CheckNetWorkBytes.m
-//  DoubleConversion
-//
-//  Created by Mac on 2019/8/20.
-//
-
-#import "NSObject+CheckNetWorkBytes.h"
+#import "NetworkInfo.h"
 #import <arpa/inet.h>
 #import <net/if.h>
 #import <ifaddrs.h>
@@ -50,7 +43,6 @@ long _lastUpLoadTimeStamp = 0;
     return speed;
 }
 
-// 上传速率
 + (long long )getUploadBytes:(NSString *)uploadBytes {
     long currentBytes = 0;
     long currentTimeStamp = [self getNowTimeTimestamp];
@@ -65,7 +57,6 @@ long _lastUpLoadTimeStamp = 0;
     return currentBytes;
 }
 
-// 下载速率
 + (long long )getDownloadBytes:(NSString *)downloadBytes {
     long currentBytes = 0;
     long currentTimeStamp = [self getNowTimeTimestamp];
@@ -80,7 +71,6 @@ long _lastUpLoadTimeStamp = 0;
     return currentBytes;
 }
 
-// 上下之和
 + (long long )getTotalBytes:(NSString *)totalBytes {
     long currentBytes = 0;
     if ( _lastBytes_total > 0) {
@@ -90,8 +80,6 @@ long _lastUpLoadTimeStamp = 0;
     return currentBytes;
 }
 
-
-/*获取网络流量信息*/
 + (NSDictionary *)getGprsWifiFlowIOBytes{
     struct ifaddrs *ifa_list = 0, *ifa;
     if (getifaddrs(&ifa_list) == -1) {
@@ -128,7 +116,6 @@ long _lastUpLoadTimeStamp = 0;
     return bytesInfo;
 }
 
-//将bytes单位转换
 + (NSString *)convertStringWithbyte:(long)bytes{
     if(bytes < 1024){ // B
         return [NSString stringWithFormat:@"%ldB", bytes];
@@ -142,7 +129,6 @@ long _lastUpLoadTimeStamp = 0;
 //    return [NSString stringWithFormat:@"%.1f", (double)bytes / 1024];
 }
 
-// 获取当前时间戳
 + (long)getNowTimeTimestamp{
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
@@ -151,15 +137,13 @@ long _lastUpLoadTimeStamp = 0;
     
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss SSS"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss SSS"]; 
     
-    //设置时区,这个对于时间的处理有时很重要
-    
-    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"America/Toronto"];
     
     [formatter setTimeZone:timeZone];
     
-    NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
+    NSDate *datenow = [NSDate date];
     
     long timeStamp =  (long)[datenow timeIntervalSince1970]*1000;
     
