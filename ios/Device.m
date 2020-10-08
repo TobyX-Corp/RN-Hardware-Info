@@ -90,8 +90,8 @@ static NSDictionary *appUsage(){
     //network usage
     NSDictionary *netWorkSpeed = [NSObject getNetworkSpeed];
   
-    NSDictionary *dict =@{@"cpu_usage": @(total_cpu),
-                        @"memory_usage": @(used_memory / (used_memory + available_memory) * 100),
+    NSDictionary *dict =@{@"cpu_usage": @(lroundf(total_cpu)),
+                        @"memory_usage": @(lroundf(used_memory / (used_memory + available_memory) * 100)),
                         @"download_speed": [netWorkSpeed valueForKey: @"downLoadSpeed"],
                         @"upload_speed": [netWorkSpeed valueForKey: @"upLoadSpeed"]
                       };

@@ -29,17 +29,23 @@ const DeviceInfo = () => {
 
   const update_device_info = () => {
     if (Device != null) {
-      Device.getAppUsage((usage) => {
-        setCpuFreq(usage.cpu_usage);
-        setMemUsg(usage.memory_usage);
-        setDownSpd(usage.download_speed);
-        setUpSpd(usage.upload_speed);
+      Device.getAppUsage((error, usage) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('get app usage');
+          console.log(usage);
+          setCpuFreq(usage.cpu_usage);
+          setMemUsg(usage.memory_usage);
+          setDownSpd(usage.download_speed);
+          setUpSpd(usage.upload_speed);
+        }
       });
     }
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text> CPU Usage: {cpu_freq}%</Text>
       <Text> RAM Usage: {ram_usg}% </Text>
       <Text> Download Speed: {down_spd} </Text>
@@ -52,13 +58,15 @@ const DeviceInfo = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+  },
   button: {
-    paddingTop: 50,
     backgroundColor: '#4ba37b',
     width: 200,
     borderRadius: 50,
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 50,
     marginLeft: 50,
   },
 });
