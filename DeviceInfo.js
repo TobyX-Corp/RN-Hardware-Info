@@ -27,7 +27,7 @@ const DeviceInfo = () => {
   const [up_spd, setUpSpd] = useState('0');
   const [down_spd, setDownSpd] = useState('0');
 
-  const update_device_info = () => {
+  const update_device_info = setInterval(() => {
     if (Device != null) {
       Device.getAppUsage((error, usage) => {
         if (error) {
@@ -42,7 +42,7 @@ const DeviceInfo = () => {
         }
       });
     }
-  };
+  }, 5000);
 
   return (
     <View style={styles.container}>
