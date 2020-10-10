@@ -1,4 +1,4 @@
-# rn-hardware-info
+# RN-Hardware-Info
 
 ## Getting started
 `- Add the following dependency to package.json:
