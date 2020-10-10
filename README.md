@@ -10,7 +10,7 @@
 
 `$ react-native link rn-hardware-info`
 
-## Usage
+## How to use
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
 
