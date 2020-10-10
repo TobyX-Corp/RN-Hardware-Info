@@ -1,8 +1,10 @@
 # rn-hardware-info
 
 ## Getting started
-`Add the following dependency to your package.json:
+`- Add the following dependency to package.json:
   "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#android_only" `
+  
+ `- run "npm install" in the project directory`
 
 ### Mostly automatic installation
 
