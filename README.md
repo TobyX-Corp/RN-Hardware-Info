@@ -16,8 +16,14 @@
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
 
-// TODO: What to do with the module?
-RnHardwareInfo;
+// get cpu frequency
+RnHardwareInfo.getDeviceCpuFreqNow(freq_callback);
+// get ram usage
+RnHardwareInfo.getDeviceMemInfo(ram_callback);
+// get battery temperature
+RnHardwareInfo.getBatteryTemperature(temperature_callback);
+// get network stats
+RnHardwareInfo.getNetworkStats(down_callback, up_callback);
 ```
 
 # For IOS
