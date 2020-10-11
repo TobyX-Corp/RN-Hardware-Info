@@ -9,7 +9,7 @@
   
  `- Run "npm install" in the project directory`
 
-### Mostly automatic installation
+### Mostly automatic installation(autolinking from RN 0.60)
 
 `$ react-native link rn-hardware-info`
 
@@ -38,7 +38,7 @@ RnHardwareInfo.getNetworkStats(down_callback, up_callback);
  
  `- Run "pod install" in the ios directory`
 
-### Mostly automatic installation
+### Mostly automatic installation(autolinking from RN 0.60)
 
 `$ react-native link rn-hardware-info`
 
