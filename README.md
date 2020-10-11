@@ -1,5 +1,6 @@
 # RN-Hardware-Info
 
+
 ## For Android
 
 ### Getting started
@@ -25,6 +26,7 @@ RnHardwareInfo.getBatteryTemperature(temperature_callback);
 // get network stats
 RnHardwareInfo.getNetworkStats(down_callback, up_callback);
 ```
+
 
 ## For IOS
 
