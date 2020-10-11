@@ -1,8 +1,8 @@
 # RN-Hardware-Info
 
-# For Android
+## For Android
 
-## Getting started
+### Getting started
 `- Add the following dependency to package.json:
   "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
   
@@ -12,7 +12,7 @@
 
 `$ react-native link rn-hardware-info`
 
-## How to use
+### How to use
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
 
@@ -26,9 +26,9 @@ RnHardwareInfo.getBatteryTemperature(temperature_callback);
 RnHardwareInfo.getNetworkStats(down_callback, up_callback);
 ```
 
-# For IOS
+## For IOS
 
-## Getting started
+### Getting started
 `- Add the following dependency to package.json:
   "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
   
@@ -40,7 +40,7 @@ RnHardwareInfo.getNetworkStats(down_callback, up_callback);
 
 `$ react-native link rn-hardware-info`
 
-## How to use
+### How to use
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
 
