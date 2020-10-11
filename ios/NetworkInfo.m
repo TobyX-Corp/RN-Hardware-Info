@@ -137,7 +137,7 @@ long _lastUpLoadTimeStamp = 0;
     
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss SSS"]; 
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss SSS"];
     
     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"America/Toronto"];
     

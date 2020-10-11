@@ -1,30 +1,40 @@
 {
-  "name": "DeviceInfo",
-  "version": "0.0.1",
-  "private": true,
+  "name": "rn-hardware-info",
+  "title": "RN Hardware Info",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "index.js",
+  "files": [
+    "README.md",
+    "android",
+    "index.js",
+    "ios",
+    "rn-hardware-info.podspec"
+  ],
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.2",
-    "react-native-device-info": "^6.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/rn-hardware-info.git",
+    "baseUrl": "https://github.com/github_account/rn-hardware-info"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "yourname@email.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
   "devDependencies": {
-    "@babel/core": "7.11.4",
-    "@babel/runtime": "7.11.2",
-    "@react-native-community/eslint-config": "1.1.0",
-    "babel-jest": "25.5.1",
-    "eslint": "6.8.0",
-    "jest": "25.5.4",
-    "metro-react-native-babel-preset": "0.59.0",
-    "react-test-renderer": "16.13.1"
-  },
-  "jest": {
-    "preset": "react-native"
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
   }
 }
