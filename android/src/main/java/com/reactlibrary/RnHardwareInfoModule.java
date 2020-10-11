@@ -207,6 +207,7 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
 
             if(mode != AppOpsManager.MODE_ALLOWED){
                 Intent request_permission = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+                request_permission.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(request_permission);
                 while (mode != AppOpsManager.MODE_ALLOWED) {
                     mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
