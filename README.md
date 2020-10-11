@@ -22,7 +22,7 @@ RnHardwareInfo.getDeviceCpuFreqNow(freq_callback);
 // get ram usage
 RnHardwareInfo.getDeviceMemInfo(ram_callback);
 // get battery temperature
-RnHardwareInfo.getBatteryTemperature(temperature_callback);
+RnHardwareInfo.getBatteryTemperature(temp_callback);
 // get network stats
 RnHardwareInfo.getNetworkStats(down_callback, up_callback);
 ```
