@@ -54,12 +54,12 @@ RnHardwareInfo.getNetworkStats((down_cb, up_cb) => {
 ## For IOS
 
 ### Installation
-`- Add the following dependency to package.json:
-  "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
+- Add the following dependency to package.json:
+  `rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master`
   
- `- Run "npm install" in the project directory`
+- Run `npm install` in the project directory
  
- `- Run "pod install" in the ios directory`
+- Run  `pod install` in the ios directory
 
 ### Mostly automatic installation(autolinking from RN 0.60)
 
