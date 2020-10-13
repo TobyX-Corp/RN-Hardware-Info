@@ -3,55 +3,57 @@
 
 ## For Android
 
-### Getting started
+### Installation
 `- Add the following dependency to package.json:
   "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
   
  `- Run "npm install" in the project directory`
 
-### Mostly automatic installation(autolinking from RN 0.60 and later versions)
+#### Mostly automatic installation(autolinking from RN 0.60 and later versions)
 
 `$ react-native link rn-hardware-info`
 
-### Check and Request Permissions
+### How to use
+```javascript
+import RnHardwareInfo from 'rn-hardware-info';
+```
+#### Check and Request Permissions
 
-#### Cellar Usage Permission
+##### Cellar Usage Permission
 One option is to:
   Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
 
-#### Wifi Usage Permission
+##### Wifi Usage Permission
 ```javascript
 MainView.checkWifiUsagePermission((request_cb) => {
   #TODO
 })
 ```
-
-### How to use
+#### Getting Data
 ```javascript
-import RnHardwareInfo from 'rn-hardware-info';
-
 // get cpu frequency
-MainView.getDeviceCpuFreqNow((cpu_cb) => {
+RnHardwareInfo.getDeviceCpuFreqNow((cpu_cb) => {
   #TODO
 })
 // get ram usage
-MainView.getDeviceMemInfo((ram_cb) => {
+RnHardwareInfo.getDeviceMemInfo((ram_cb) => {
   #TODO
 })
 // get battery temperature
-MainView.getBatteryTemperature((temp_cb) => {
+RnHardwareInfo.getBatteryTemperature((temp_cb) => {
   #TODO
 })
 // get network stats
-MainView.getNetworkStats((down_cb, up_cb) => {
+RnHardwareInfo.getNetworkStats((down_cb, up_cb) => {
   #TODO
 })
 ```
 
 
+
 ## For IOS
 
-### Getting started
+### Installation
 `- Add the following dependency to package.json:
   "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
   
