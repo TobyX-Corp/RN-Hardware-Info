@@ -9,7 +9,7 @@
   
  `- Run "npm install" in the project directory`
 
-### Mostly automatic installation(autolinking from RN 0.60)
+### Mostly automatic installation(autolinking from RN 0.60 and later versions)
 
 `$ react-native link rn-hardware-info`
 
@@ -18,15 +18,32 @@
 import RnHardwareInfo from 'rn-hardware-info';
 
 // get cpu frequency
-RnHardwareInfo.getDeviceCpuFreqNow(freq_callback);
+MainView.getDeviceCpuFreqNow((cpu_cb) => {
+  #TODO
+})
 // get ram usage
-RnHardwareInfo.getDeviceMemInfo(ram_callback);
+MainView.getDeviceMemInfo((ram_cb) => {
+  #TODO
+})
 // get battery temperature
-RnHardwareInfo.getBatteryTemperature(temp_callback);
+MainView.getBatteryTemperature((temp_cb) => {
+  #TODO
+})
 // get network stats
-RnHardwareInfo.getNetworkStats(down_callback, up_callback);
+MainView.getNetworkStats((down_cb, up_cb) => {
+  #TODO
+})
 ```
-
+### Check and Request Permissions
+#### Cellar Usage Permission
+One option is to:
+  Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
+#### Wifi Usage Permission
+```javascript
+MainView.checkWifiUsagePermission((request_cb) => {
+  #TODO
+})
+```
 
 ## For IOS
 
