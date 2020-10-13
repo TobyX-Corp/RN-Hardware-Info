@@ -1,11 +1,14 @@
 package com.reactlibrary;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.AppOpsManager;
 import android.app.usage.NetworkStats;
 import android.app.usage.NetworkStatsManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -13,6 +16,7 @@ import android.net.ConnectivityManager;
 import android.os.BatteryManager;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 
 import androidx.core.content.ContextCompat;
 
@@ -271,7 +275,7 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void checkNetPermission(Callback cb){
+    public void checkNetPermission(final Callback cb){
         final Activity activity = getCurrentActivity();
         final ReactApplicationContext context = this.reactContext;
 
@@ -315,5 +319,5 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
         }
 
     }
-    
+
 }
