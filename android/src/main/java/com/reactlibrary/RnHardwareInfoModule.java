@@ -14,6 +14,8 @@ import android.os.BatteryManager;
 import android.os.RemoteException;
 import android.provider.Settings;
 
+import androidx.core.content.ContextCompat;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -205,56 +207,113 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
 //            Intent disable_usage = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
 //            context.startActivity(disable_usage);
 
-            if(mode != AppOpsManager.MODE_ALLOWED){
-                Intent request_permission = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-                request_permission.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(request_permission);
-                while (mode != AppOpsManager.MODE_ALLOWED) {
-                    mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
+
+            if (mode == AppOpsManager.MODE_ALLOWED) {
+
+                NetworkStatsManager networkStatsManager = (NetworkStatsManager) context.getSystemService(context.NETWORK_STATS_SERVICE);
+                NetworkStats.Bucket bucket_wifi;
+                NetworkStats.Bucket bucket_data;
+
+                try {
+
+                    time = System.currentTimeMillis();
+                    bucket_wifi = networkStatsManager.querySummaryForDevice(ConnectivityManager.TYPE_WIFI,
+                            "",
+                            0,
+                            System.currentTimeMillis());
+
+                    bucket_data = networkStatsManager.querySummaryForDevice(ConnectivityManager.TYPE_MOBILE,
+                            getSubscriberId(context, ConnectivityManager.TYPE_MOBILE),
+                            0,
+                            System.currentTimeMillis());
+
+                    down = bucket_wifi.getRxBytes() + bucket_data.getRxBytes();
+                    up = bucket_wifi.getTxBytes() + bucket_data.getTxBytes();
+
+                    if (this.update_flag == 0) {
+                        down_in_KBps = 0;
+                        up_in_KBps = 0;
+                    } else {
+                        double unit = 1.024 * (time - this.time_old);
+                        down_in_KBps = (down - this.down_old) / unit;
+                        up_in_KBps = (up - this.up_old) / unit;
+                    }
+
+                    cb.invoke(down_in_KBps + "kBps", up_in_KBps + "kBps");
+
+                    this.time_old = time;
+                    this.down_old = down;
+                    this.up_old = up;
+                    this.update_flag = 1;
+
+                } catch (RemoteException e) {
+                    cb.invoke(e.getMessage(), null);
                 }
-                Intent main_app = new Intent(activity, activity.getClass());
-                main_app.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(main_app);
+            } else {
+                cb.invoke("No data", "No data");
             }
 
+        } else System.out.println("SDK version is less than code version");
 
-            NetworkStatsManager networkStatsManager = (NetworkStatsManager) context.getSystemService(context.NETWORK_STATS_SERVICE);
-            NetworkStats.Bucket bucket;
+    }
 
-            try {
+    private String getSubscriberId(Context context, int networkType) {
 
-                time = System.currentTimeMillis();
-                bucket = networkStatsManager.querySummaryForDevice(ConnectivityManager.TYPE_WIFI,
-                        "",
-                        0,
-                        System.currentTimeMillis());
-
-                down = bucket.getRxBytes();
-                up = bucket.getTxBytes();
-
-                if(this.update_flag == 0){
-                    down_in_KBps = 0;
-                    up_in_KBps = 0;
-                }
-                else{
-                    double unit = 1.024*(time - this.time_old);
-                    down_in_KBps = (down-this.down_old)/unit;
-                    up_in_KBps = (up-this.up_old)/unit;
-                }
-
-                cb.invoke(down_in_KBps + "kBps", up_in_KBps + "kBps");
-
-                this.time_old = time;
-                this.down_old = down;
-                this.up_old = up;
-                this.update_flag = 1;
-
-            } catch (RemoteException e) {
-                cb.invoke(e.getMessage(), null);
+        if (ConnectivityManager.TYPE_MOBILE == networkType) {
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                return tm.getSubscriberId();
+            }else{
+                return "";
             }
-
         }
-        else System.out.println("SDK version is less than code version");
+        return "";
+    }
+
+    @ReactMethod
+    public void checkNetPermission(Callback cb){
+        final Activity activity = getCurrentActivity();
+        final ReactApplicationContext context = this.reactContext;
+
+
+//        Intent disable_usage = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+//        context.startActivity(disable_usage);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            final AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+            int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
+
+            if(mode != AppOpsManager.MODE_ALLOWED) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setMessage("Would you allow the application get access to you Wifi usage?")
+                        .setPositiveButton("OK, go to usage settings", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                Intent request_permission = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+                                request_permission.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(request_permission);
+                                int cur_mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
+                                while (cur_mode != AppOpsManager.MODE_ALLOWED) {
+                                    cur_mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
+                                }
+                                Intent main_app = new Intent(activity, activity.getClass());
+                                main_app.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(main_app);
+                                cb.invoke("permission granted");
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                cb.invoke("permission denied");
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+            else cb.invoke("permission granted");
+        }
+
     }
     
 }
