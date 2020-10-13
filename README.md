@@ -13,6 +13,19 @@
 
 `$ react-native link rn-hardware-info`
 
+### Check and Request Permissions
+
+#### Cellar Usage Permission
+One option is to:
+  Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
+
+#### Wifi Usage Permission
+```javascript
+MainView.checkWifiUsagePermission((request_cb) => {
+  #TODO
+})
+```
+
 ### How to use
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
@@ -34,16 +47,7 @@ MainView.getNetworkStats((down_cb, up_cb) => {
   #TODO
 })
 ```
-### Check and Request Permissions
-#### Cellar Usage Permission
-One option is to:
-  Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
-#### Wifi Usage Permission
-```javascript
-MainView.checkWifiUsagePermission((request_cb) => {
-  #TODO
-})
-```
+
 
 ## For IOS
 
