@@ -64,7 +64,7 @@ RnHardwareInfo.getNetworkStats((down_cb, up_cb) => {
  
 - Run  `pod install` in the ios directory
 
-### Mostly automatic installation(autolinking from RN 0.60)
+Mostly automatic installation(autolinking from RN 0.60)
 
 `$ react-native link rn-hardware-info`
 
