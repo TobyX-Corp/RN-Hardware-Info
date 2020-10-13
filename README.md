@@ -25,7 +25,7 @@ One option is to:
 
 #### Wifi Usage Permission
 ```javascript
-MainView.checkWifiUsagePermission((request_cb) => {
+MainView.checkWifiUsagePermission(permsn_cb) => {
   #TODO
 })
 ```
