@@ -20,8 +20,8 @@ import RnHardwareInfo from 'rn-hardware-info';
 ### Check and Request Permissions:
 
 Cellar Usage Permission
-One option is to:
-  Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
+
+One option is to:Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
 
 Wifi Usage Permission
 ```javascript
