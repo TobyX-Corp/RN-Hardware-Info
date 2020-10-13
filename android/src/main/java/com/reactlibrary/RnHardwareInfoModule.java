@@ -208,10 +208,6 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
             final AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
             int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
 
-//            Intent disable_usage = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-//            context.startActivity(disable_usage);
-
-
             if (mode == AppOpsManager.MODE_ALLOWED) {
 
                 NetworkStatsManager networkStatsManager = (NetworkStatsManager) context.getSystemService(context.NETWORK_STATS_SERVICE);
@@ -219,7 +215,6 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
                 NetworkStats.Bucket bucket_data;
 
                 try {
-
                     time = System.currentTimeMillis();
                     bucket_wifi = networkStatsManager.querySummaryForDevice(ConnectivityManager.TYPE_WIFI,
                             "",
@@ -275,13 +270,13 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void checkNetPermission(final Callback cb){
+    public void checkWifiUsagePermission(final Callback cb){
         final Activity activity = getCurrentActivity();
         final ReactApplicationContext context = this.reactContext;
 
-
 //        Intent disable_usage = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
 //        context.startActivity(disable_usage);
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             final AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
             int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
