@@ -4,12 +4,12 @@
 ## For Android
 
 ### Installation
-`- Add the following dependency to package.json:
-  "rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
+- Add the following dependency to package.json:
+  `rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master`
   
- `- Run "npm install" in the project directory`
+- Run `npm install` in the project directory
 
-### Mostly automatic installation(autolinking from RN 0.60 and later versions)
+Mostly automatic installation(autolinking from RN 0.60 and later versions)
 
 `$ react-native link rn-hardware-info`
 
@@ -17,19 +17,19 @@
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
 ```
-### Check and Request Permissions:
+Check and Request Permissions:
 
-### Cellar Usage Permission
+Cellar Usage Permission
 One option is to:
   Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
 
-### Wifi Usage Permission
+Wifi Usage Permission
 ```javascript
 MainView.checkWifiUsagePermission(permsn_cb) => {
   #TODO
 })
 ```
-### Getting Data
+Getting Data
 ```javascript
 // get cpu frequency
 RnHardwareInfo.getDeviceCpuFreqNow((cpu_cb) => {
