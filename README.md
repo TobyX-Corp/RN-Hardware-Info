@@ -17,7 +17,7 @@ Mostly automatic installation(autolinking from RN 0.60 and later versions)
 ```javascript
 import RnHardwareInfo from 'rn-hardware-info';
 ```
-###Check and Request Permissions:
+### Check and Request Permissions:
 
 Cellar Usage Permission
 One option is to:
@@ -29,7 +29,7 @@ MainView.checkWifiUsagePermission(permsn_cb) => {
   #TODO
 })
 ```
-###Getting Data
+### Getting Data
 ```javascript
 // get cpu frequency
 RnHardwareInfo.getDeviceCpuFreqNow((cpu_cb) => {
