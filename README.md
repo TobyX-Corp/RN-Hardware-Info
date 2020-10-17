@@ -70,18 +70,47 @@ Mostly automatic installation(autolinking from RN 0.60)
 
 ### How to use
 ```javascript
-import RnHardwareInfo from 'rn-hardware-info';
-
-//Display hardware info
 RnHardwareInfo.getAppUsage((error, usage) => {
   if (error) {
     console.log(error);
   } else {
-    console.log(usage);
     console.log(usage.cpu_usage);
     console.log(usage.memory_usage);
     console.log(usage.download_speed);
     console.log(usage.upload_speed);
   }
 });
+```
+### Example
+```javascript
+import React, {useState, useEffect} from 'react';
+import RnHardwareInfo from 'rn-hardware-info';
+
+//Display hardware info eg. cpu
+const DeviceInfo = () => {
+  const [cpu, setCpu] = useState('0');
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (RnHardwareInfo != null) {
+        RnHardwareInfo.getAppUsage((error, usage) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('get app usage');
+            console.log(usage);
+            setCpu(usage.cpu_usage);
+          }
+        });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  return (
+    <View style={styles.container}>
+      <Text> CPU Usage: {cpu}%</Text>
+    </View>
+  );
+};
 ```
