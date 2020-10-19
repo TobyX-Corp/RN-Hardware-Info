@@ -201,7 +201,7 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
         double down_in_KBps;
         double up_in_KBps;
 
-        final Activity activity = getCurrentActivity();
+//        final Activity activity = getCurrentActivity();
         final ReactApplicationContext context = this.reactContext;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -212,7 +212,7 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
 
                 NetworkStatsManager networkStatsManager = (NetworkStatsManager) context.getSystemService(context.NETWORK_STATS_SERVICE);
                 NetworkStats.Bucket bucket_wifi;
-                NetworkStats.Bucket bucket_data;
+//                NetworkStats.Bucket bucket_data;
 
                 try {
                     time = System.currentTimeMillis();
@@ -221,13 +221,13 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
                             0,
                             System.currentTimeMillis());
 
-                    bucket_data = networkStatsManager.querySummaryForDevice(ConnectivityManager.TYPE_MOBILE,
-                            getSubscriberId(context, ConnectivityManager.TYPE_MOBILE),
-                            0,
-                            System.currentTimeMillis());
+//                    bucket_data = networkStatsManager.querySummaryForDevice(ConnectivityManager.TYPE_MOBILE,
+//                            getSubscriberId(context, ConnectivityManager.TYPE_MOBILE),
+//                            0,
+//                            System.currentTimeMillis());
 
-                    down = bucket_wifi.getRxBytes() + bucket_data.getRxBytes();
-                    up = bucket_wifi.getTxBytes() + bucket_data.getTxBytes();
+                    down = bucket_wifi.getRxBytes();
+                    up = bucket_wifi.getTxBytes();
 
                     if (this.update_flag == 0) {
                         down_in_KBps = 0;
@@ -256,18 +256,18 @@ public class RnHardwareInfoModule extends ReactContextBaseJavaModule {
 
     }
 
-    private String getSubscriberId(Context context, int networkType) {
-
-        if (ConnectivityManager.TYPE_MOBILE == networkType) {
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                return tm.getSubscriberId();
-            }else{
-                return "";
-            }
-        }
-        return "";
-    }
+//    private String getSubscriberId(Context context, int networkType) {
+//
+//        if (ConnectivityManager.TYPE_MOBILE == networkType) {
+//            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+//            if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+//                return tm.getSubscriberId();
+//            }else{
+//                return "";
+//            }
+//        }
+//        return "";
+//    }
 
     @ReactMethod
     public void checkWifiUsagePermission(final Callback cb){

@@ -1,4 +1,4 @@
-# RN-Hardware-Info
+ty cat o# RN-Hardware-Info
 
 
 ## For Android
@@ -18,12 +18,6 @@ Mostly automatic installation(autolinking from RN 0.60 and later versions)
 import RnHardwareInfo from 'rn-hardware-info';
 ```
 ### Check and Request Permissions:
-
-Cellar Usage Permission:
-
-- One option is to:
-
-     Use PermissionsAndroid as instructed on https://reactnative.dev/docs/permissionsandroid
 
 Wifi Usage Permission:
 ```javascript
