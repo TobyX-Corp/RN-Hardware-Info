@@ -1,4 +1,4 @@
-ty cat o# RN-Hardware-Info
+# RN-Hardware-Info
 
 
 ## For Android
