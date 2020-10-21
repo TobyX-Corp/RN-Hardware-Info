@@ -5,7 +5,7 @@
 
 ### Installation
 - Add the following dependency to package.json:
-  `rn-hardware-info: TobyX-Corp/RN-Hardware-Info#master`
+  `"rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
   
 - Run `npm install` in the project directory
 
@@ -52,7 +52,7 @@ RnHardwareInfo.getNetworkStats((down_cb, up_cb) => {
 
 ### Installation
 - Add the following dependency to package.json:
-  `rn-hardware-info: TobyX-Corp/RN-Hardware-Info#master`
+  `"rn-hardware-info": "TobyX-Corp/RN-Hardware-Info#master"`
   
 - Run `npm install` in the project directory
  
