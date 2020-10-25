@@ -21,7 +21,7 @@ import RnHardwareInfo from 'rn-hardware-info';
 
 Wifi Usage Permission:
 ```javascript
-MainView.checkWifiUsagePermission(permsn_cb) => {
+MainView.checkWifiUsagePermission((permsn_cb) => {
   #TODO
 })
 ```
