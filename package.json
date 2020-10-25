@@ -1,8 +1,8 @@
 {
   "name": "rn-hardware-info",
   "title": "RN Hardware Info",
-  "version": "1.0.0",
-  "description": "An backend API that retrieves peformance information of hardware to React Native Apps",
+  "version": "0.1.0",
+  "description": "A backend API that retrieves peformance information of hardware to React Native Apps",
   "main": "index.js",
   "files": [
     "README.md",
@@ -16,8 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/rn-hardware-info.git",
-    "baseUrl": "https://github.com/github_account/rn-hardware-info"
+    "url": "https://github.com/TobyX-Corp/RN-Hardware-Info"
   },
   "keywords": [
     "react-native"
@@ -30,6 +29,7 @@
     "react": "^16.8.1",
     "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
+  "homepage": "https://github.com/TobyX-Corp/RN-Hardware-Info",
   "devDependencies": {
     "react": "^16.9.0",
     "react-native": "^0.61.5"
