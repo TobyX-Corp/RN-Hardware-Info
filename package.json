@@ -2,7 +2,7 @@
   "name": "rn-hardware-info",
   "title": "RN Hardware Info",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "An backend API that retrieves peformance information of hardware to React Native Apps",
   "main": "index.js",
   "files": [
     "README.md",
@@ -22,10 +22,7 @@
   "keywords": [
     "react-native"
   ],
-  "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
-  },
+  "author": "TobyX Corp",
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
