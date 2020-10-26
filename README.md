@@ -20,26 +20,26 @@ import RnHardwareInfo from 'rn-hardware-info';
 Wifi Usage Permission:
 ```javascript
 MainView.checkWifiUsagePermission((permsn_cb) => {
-  #TODO
+  #your code on how to use permsn_cb
 })
 ```
 ### Getting Data
 ```javascript
 // get cpu frequency
 RnHardwareInfo.getDeviceCpuFreqNow((cpu_cb) => {
-  #TODO
+  #your code on how to use cpu_cb
 })
 // get ram usage
 RnHardwareInfo.getDeviceMemInfo((ram_cb) => {
-  #TODO
+  #your code on how to use ram_cb
 })
 // get battery temperature
 RnHardwareInfo.getBatteryTemperature((temp_cb) => {
-  #TODO
+  #your code on how to use temp_cb
 })
 // get network stats
 RnHardwareInfo.getNetworkStats((down_cb, up_cb) => {
-  #TODO
+  #your code on how to use down_cb and up_cb
 })
 ```
 
